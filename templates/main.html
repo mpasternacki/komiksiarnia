@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+     <title>Komiksiarnia 3.0 — {% block title %}{% endblock %}</title>
+     <meta name="Content-Type" content="text/html; charset=UTF-8">
+     <link rel="stylesheet" href="/_static/screen.css" type="text/css" media="screen,projection">
+     <link rel="stylesheet" href="/_static/print.css" type="text/css" media="print">
+     <!--[if IE]><link rel="stylesheet" href="/_static/ie.css" type="text/css" media="screen,projection"><![endif]-->
+     <link rel="alternate"  type="application/rss+xml" title="RSS" href="/feed/rss/">
+     <link rel="alternate"  type="application/atom+xml" title="RSS" href="/feed/atom/">
+   </head>
+   <body>
+     <div class="wrapper">
+       <ul class="menu">
+         <li><a href="/">Serie</a></li>
+         <li><a href="/new/">Nowe paski</a>
+           (<a href="/*/new/">alt</a>) </li>
+         <li>Ostatnie paski: <a href="/*/">wszystkich serii</a>{% if user.is_authenticated %},
+           <a href="/**/">wybranych serii</a>{% endif %}</li>
+         <li><a href="/*/random/">Losuj</a></li>
+         <li><a href="/*/tag/">Tagi</a></li>
+         <li><a href="/feed/rss/">RSS</a></li>
+         <li>
+           {% if user.is_authenticated %}
+           zalogowano: <a href="/accounts/profile/">{{ user }}</a> [<a href="/accounts/logout/">wyloguj</a>]
+           {% else %}
+           <form method="post" action="{% url django.contrib.auth.views.login %}">
+             <label for="id_username">login</label>
+             <input id="id_username" type="text" class="text" name="username" maxlength="30">
+             <label for="id_password">hasło</label>
+             <input id="id_password" type="password"  class="text" name="password">
+             <input type="submit" value="zaloguj">
+          </form>
+           <a href="/accounts/createuser/">rejestracja</a>
+           {% endif %}
+         </li>
+      </ul>
+        <h1>{% block titleh1 %}{% endblock %}</h1>
+         {% block content %}{% endblock %}
+
+       <ul class="menu">
+         <li>Copyright &copy; japhy &amp; leafnode</li>
+         <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6b%6f%6d%69%6b%73%79@%6c%69%73%74%73.%77%61%66%65%6c.%63%6f%6d" >&#x4b;&#x6f;&#x6e;&#x74;&#x61;&#x6b;&#x74;</a></li>
+         <li><a href="http://blog.komiksiarnia.net/">News</a></li>
+         <li><a href="http://www.intersec.pl/hosting.php">Hosting: Metroplex</a>/<a href="http://www.intersec.pl/">intersec.pl</a></li>
+       </ul>
+       <p class="disclaimer">Serwis jest niekomercyjny. Z tytułu
+         prowadzenia go autorzy nie otrzymują żadnych pieniędzy. W
+         przypadku zgłoszenia przez autorów pasków zastrzeżeń co do
+         wykorzystania ich w tym serwisie, zostanie on usunięty.</p>
+       <p class="disclaimer">This service is not commercial. Its
+         admins are not receiving any kind of gratification for
+         running it. If authors claim rights to any strip, it will be
+         removed.</p>
+     </div>
+   </body>
+</html>
+ 
