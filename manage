@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e -x
+cd `dirname $0`
+export PYTHONPATH=./site-packages
+exec python ./project/manage.py "${@}"
