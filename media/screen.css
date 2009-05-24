@@ -119,11 +119,15 @@ ul.nav li { display: inline; margin-left: 1em; }
 
 .tag-list { display: block; }
 .tag-list li { display: inline; margin-right: 1.5em; }
+.tag-list li a.size1 { font-size: small }
+.tag-list li a.size2 { font-size: medium }
+.tag-list li a.size3 { font-size: large }
+.tag-list li a.size4 { font-size: xx-large }
 
 ul.menu { clear: both; display: block; text-align: center; background: #AAA; margin-left: 0; margin-right: 0; }
 ul.menu li { display: inline; margin-left: .75em; margin-right: .75em; }
-ul.menu li form { display: inline; }
-ul.menu li input.text { padding: 0; width: 75px; font-size: smaller; }
+ul.menu li form, div.tags form { display: inline; }
+ul.menu li input.text, div.tags input.text { padding: 0; width: 75px; font-size: smaller; }
 ul.menu a { text-decoration: none; }
 ul.menu a:hover, ul.menu a:focus, ul.menu a:active { text-decoration: underline; }
 
