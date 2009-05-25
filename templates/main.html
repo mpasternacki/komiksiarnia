@@ -7,8 +7,10 @@
      <link rel="stylesheet" href="/_static/screen.css" type="text/css" media="screen,projection">
      <link rel="stylesheet" href="/_static/print.css" type="text/css" media="print">
      <!--[if IE]><link rel="stylesheet" href="/_static/ie.css" type="text/css" media="screen,projection"><![endif]-->
-     <link rel="alternate"  type="application/rss+xml" title="RSS" href="/feed/rss/">
-     <link rel="alternate"  type="application/atom+xml" title="RSS" href="/feed/atom/">
+     <link rel="alternate"  type="application/rss+xml" title="RSS"
+          href="/feed/rss/{% if user.is_authenticated %}*/{{user}}{% endif %}">
+     <link rel="alternate"  type="application/atom+xml" title="RSS"
+          href="/feed/atom/{% if user.is_authenticated %}*/{{user}}{% endif %}">
    </head>
    <body>
      <div class="wrapper">
@@ -20,8 +22,7 @@
            <a href="/**/">wybranych serii</a>{% endif %}</li>
          <li><a href="/*/random/">Losuj</a></li>
          <li><a href="/*/tag/">Tagi</a></li>
-         <li><a href="/feed/rss/">RSS</a></li>
-         <li>
+        <li>
            {% if user.is_authenticated %}
            zalogowano: <a href="/accounts/profile/">{{ user }}</a> [<a href="/accounts/logout/">wyloguj</a>]
            {% else %}
@@ -44,6 +45,8 @@
          <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6b%6f%6d%69%6b%73%79@%6c%69%73%74%73.%77%61%66%65%6c.%63%6f%6d" >&#x4b;&#x6f;&#x6e;&#x74;&#x61;&#x6b;&#x74;</a></li>
          <li><a href="http://blog.komiksiarnia.net/">News</a></li>
          <li><a href="http://www.intersec.pl/hosting.php">Hosting: Metroplex</a>/<a href="http://www.intersec.pl/">intersec.pl</a></li>
+         <li><a href="/feed/rss/{% if user.is_authenticated %}*/{{user}}{% endif %}">RSS</a>
+           / <a href="/feed/atom/{% if user.is_authenticated %}*/{{user}}{% endif %}">ATOM</a></li>
        </ul>
        <p class="disclaimer">Serwis jest niekomercyjny. Z tytułu
          prowadzenia go autorzy nie otrzymują żadnych pieniędzy. W
