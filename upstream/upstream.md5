@@ -10,3 +10,8 @@ cd9e7a46c6b66dd30de2c748c801b912  django-tagging/tagging/models.py
 0dd9381613e65273a53c05da4c901219  django-tagging/tagging/settings.py
 e7e102dc295758733e391e64ab58521d  django-tagging/tagging/utils.py
 90a5836ed3edc70604f63fc26e09ab48  django-tagging/tagging/views.py
+68b329da9893e34099c7d8ad5cb9c940  django-pagination/pagination/__init__.py
+97ff66371ede5c40332ec5e91c29beaf  django-pagination/pagination/middleware.py
+68b329da9893e34099c7d8ad5cb9c940  django-pagination/pagination/models.py
+dce19fd881ad42a94f79f83c37b52f4a  django-pagination/pagination/paginator.py
+f32a2beda335f0415e50c2b83d3b1017  django-pagination/pagination/tests.py

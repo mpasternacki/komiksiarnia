@@ -12,18 +12,19 @@ copy: do-copy md5check .gitignore
 DJANGO_F=Django-$(DJANGO_VER)-final.tar.gz
 PHPSERIALIZE_F=phpserialize-$(PHPSERIALIZE_VER).tar.gz
 
-MD5_TARGETS= $(DJANGO_F) $(PHPSERIALIZE_F) django-tagging/tagging/*.py
+MD5_TARGETS= $(DJANGO_F) $(PHPSERIALIZE_F) django-tagging/tagging/*.py django-pagination/pagination/*.py
 
 .gitignore:
-	echo $@ > $@
-	echo '*.stamp' >> $@
-	echo $(DJANGO_F) >> $@
-	echo `basename $(DJANGO_F) .tar.gz` >> $@
-	echo django >> $@
-	echo $(PHPSERIALIZE_F) >> $@
-	echo `basename $(PHPSERIALIZE_F) .tar.gz` >> $@
-	echo phpserialize >> $@
-	echo django-tagging/ >> $@
+	@echo $@ > $@
+	@echo '*.stamp' >> $@
+	@echo $(DJANGO_F) >> $@
+	@echo `basename $(DJANGO_F) .tar.gz` >> $@
+	@echo django >> $@
+	@echo $(PHPSERIALIZE_F) >> $@
+	@echo `basename $(PHPSERIALIZE_F) .tar.gz` >> $@
+	@echo phpserialize >> $@
+	@echo django-tagging/ >> $@
+	@echo django-pagination/ >> $@
 
 # upstream packages
 django.stamp: $(DJANGO_F)
