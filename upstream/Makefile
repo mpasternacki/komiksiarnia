@@ -2,9 +2,10 @@
 DJANGO_VER=1.0.2
 TAGGING_RELEASE=154
 PHPSERIALIZE_VER=1.1
+PAGINATION_RELEASE=50
 
 # targets
-all: django.stamp django-tagging.stamp phpserialize.stamp md5check .gitignore
+all: django.stamp django-tagging.stamp phpserialize.stamp pagination.stamp md5check .gitignore
 copy: do-copy md5check .gitignore
 
 # files
@@ -46,6 +47,11 @@ phpserialize.stamp: $(PHPSERIALIZE_F)
 
 $(PHPSERIALIZE_F):
 	wget http://pypi.python.org/packages/source/p/phpserialize/$@
+
+pagination.stamp:
+	svn checkout -r$(PAGINATION_RELEASE) http://django-pagination.googlecode.com/svn/trunk/ django-pagination
+	cd django-pagination/pagination && ../../Django-1.0.2-final/django/bin/django-admin.py compilemessages
+	date > $@
 
 # misc
 .PHONY: do-copy md5check md5update
