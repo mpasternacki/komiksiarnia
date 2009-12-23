@@ -1,0 +1,6 @@
+*.stamp
+Django-*
+django
+phpserialize*
+django-tagging/
+django-pagination/

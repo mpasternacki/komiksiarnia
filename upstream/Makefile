@@ -6,10 +6,9 @@ PAGINATION_RELEASE=50
 
 # targets
 all: django.stamp django-tagging.stamp phpserialize.stamp pagination.stamp md5check .gitignore
-copy: do-copy md5check .gitignore
 
 # files
-DJANGO_F=Django-$(DJANGO_VER)-final.tar.gz
+DJANGO_F=Django-$(DJANGO_VER).tar.gz
 PHPSERIALIZE_F=phpserialize-$(PHPSERIALIZE_VER).tar.gz
 
 MD5_TARGETS= $(DJANGO_F) $(PHPSERIALIZE_F) django-tagging/tagging/*.py django-pagination/pagination/*.py
@@ -33,7 +32,7 @@ django.stamp: $(DJANGO_F)
 	date > $@
 
 $(DJANGO_F):
-	wget http://media.djangoproject.com/releases/1.0.2/$@
+	wget -nv -O $@ http://www.djangoproject.com/download/$(DJANGO_VER)/tarball
 
 
 django-tagging.stamp:
@@ -47,7 +46,7 @@ phpserialize.stamp: $(PHPSERIALIZE_F)
 	date > $@
 
 $(PHPSERIALIZE_F):
-	wget http://pypi.python.org/packages/source/p/phpserialize/$@
+	wget -nv http://pypi.python.org/packages/source/p/phpserialize/$@
 
 pagination.stamp:
 	svn checkout -r$(PAGINATION_RELEASE) http://django-pagination.googlecode.com/svn/trunk/ django-pagination
