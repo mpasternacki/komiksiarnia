@@ -53,26 +53,3 @@ pagination.stamp:
 	svn checkout -r$(PAGINATION_RELEASE) http://django-pagination.googlecode.com/svn/trunk/ django-pagination
 	cd django-pagination/pagination && ../../Django-1.0.2-final/django/bin/django-admin.py compilemessages
 	date > $@
-
-# misc
-.PHONY: do-copy md5check md5update
-do-copy:
-	cp -Rvn $(FROM)/upstream/* .
-
-# sudo port install md5sha1sum
-md5check: upstream.md5
-	@echo '***'
-	@echo '*** CHECKSUM CHECK ***'
-	@echo '***'
-	md5sum -c upstream.md5
-
-upstream.md5:
-	@echo '***'
-	@echo '*** RECALCULATING CHECKSUMS ***'
-	@echo '*** BEWARE ***'
-	@echo '***'
-	md5sum $(MD5_TARGETS) > upstream.md5
-	@echo '***'
-	@echo '*** Stopped.  Run `make'"'"' again to continue. ***'
-	@echo '***'
-	@false
