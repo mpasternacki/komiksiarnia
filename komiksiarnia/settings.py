@@ -1,7 +1,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-PROJECT_ROOT = '.'                      # FIXME
+import os
+PROJECT_ROOT = os.path.abspath(os.path.split(__file__)[0])
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -33,7 +34,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = PROJECT_ROOT+'/public_html/static/'
+MEDIA_ROOT = PROJECT_ROOT+'/static/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -74,7 +75,7 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
 )
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'komiksiarnia.urls'
 
 TEMPLATE_DIRS = ( PROJECT_ROOT+"/templates", )
 
@@ -92,3 +93,8 @@ INSTALLED_APPS = (
 )
 
 PAGINATION_INVALID_PAGE_RAISES_404 = True
+
+try:
+    from local_settings import *        # pyflakes:ignore
+except ImportError:
+    pass
