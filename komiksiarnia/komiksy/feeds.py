@@ -11,7 +11,7 @@ class KomiksyRSS(Feed):
 
     def get_object(self, bits):
 
-        if not bits or len(bits)<2 or bits[1]=='*': u=None
+        if not bits or len(bits)<2: u=None
         else: u = get_object_or_404(User, username=bits[1])
 
         if not bits or bits[0]=='*': s = None
