@@ -38,10 +38,10 @@ class Pasek(models.Model):
     seria = models.ForeignKey(Seria, db_column='seria')
     numer = models.IntegerField(unique=True, null=True, blank=True)
     data = models.DateField(unique=True, null=True, blank=True)
-    rozszerzenie = models.CharField(unique=True, max_length=384, blank=True)
-    plik = models.CharField(max_length=765)
+    rozszerzenie = models.CharField(unique=True, max_length=255, blank=True)
+    plik = models.CharField(max_length=255)
     poprzedni = models.ForeignKey('self', null=True, db_column='poprzedni')
-    tytul_paska = models.CharField(max_length=765, blank=True)
+    tytul_paska = models.CharField(max_length=255, blank=True)
     komentarz = models.TextField(blank=True)
     time = models.DateTimeField(null=True, blank=True)
     tagi = TagField()
@@ -90,11 +90,11 @@ tagging.register(Pasek)
 
 class Attachment(models.Model):
     pasek = models.ForeignKey(Pasek, db_column='pasek')
-    plik = models.CharField(max_length=765, blank=True, primary_key=True) # hack hack?
+    plik = models.CharField(max_length=255, blank=True, primary_key=True) # hack hack?
     sortorder = models.IntegerField(null=True, blank=True)
     def get_absolute_url(self):
         return 'http://new.komiksiarnia.net/strip/%d,%d' % ( self.pasek.id, self.sortorder )
-    class Meta: 
+    class Meta:
         # managed = False
         db_table = u'attachments'
         ordering = ["pasek", "sortorder"]
