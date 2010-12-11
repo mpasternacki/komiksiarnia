@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-
-import os, sys
-sys.path.insert(0, os.path.realpath(os.path.join(
-    os.path.dirname(__file__), "..", "site-python")))
+#!../upstream/python/bin/python
 
 from django.core.management import execute_manager
 try:
