@@ -2,8 +2,8 @@ from django.db import connection
 from django.contrib.auth.models import User
 import phpserialize
 from tagging.models import Tag
-from komiksy.models import Seria, Pasek
-from lusers.models import UserProfile
+from komiksiarnia.komiksy.models import Seria, Pasek
+from komiksiarnia.lusers.models import UserProfile
 
 cursor = connection.cursor()
 
@@ -42,7 +42,7 @@ def migrate_tags():
     cursor.execute("DELETE FROM tagi WHERE tag LIKE '#%';")
 
     cursor.execute("SELECT * FROM tagi;")
-    for pasek_id, tag_name, user_id, seria_id, tag_id in cursor.fetchall():
+    for pasek_id, tag_name, user_id, seria_id in cursor.fetchall():
         pasek = Pasek.objects.get(id=pasek_id)
         if not tag_name: continue
         try: tag_name = tag_name.encode('iso-8859-1').decode('iso-8859-2')
