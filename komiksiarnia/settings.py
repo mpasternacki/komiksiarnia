@@ -5,7 +5,7 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.split(__file__)[0])
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Mailing list', 'komiksy@lists.wafel.com'),
 )
 
 MANAGERS = ADMINS
