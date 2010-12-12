@@ -7,6 +7,7 @@ PROJECT_ROOT = os.path.abspath(os.path.split(__file__)[0])
 ADMINS = (
     ('Mailing list', 'komiksy@lists.wafel.com'),
 )
+SERVER_EMAIL = 'komiksy@marchewa.wafel.com'
 
 MANAGERS = ADMINS
 
