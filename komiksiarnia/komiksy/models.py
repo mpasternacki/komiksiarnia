@@ -2,6 +2,7 @@ import re
 from collections import defaultdict
 
 from django.db import models, connection
+from django.contrib import admin
 from django.contrib.auth.models import User
 
 import tagging
@@ -33,6 +34,8 @@ class Seria(models.Model):
 
     def moar(self, maxid):
         return Pasek.objects.filter(id__gt=maxid, seria=self).count()
+
+admin.site.register(Seria)
 
 class Pasek(models.Model):
     seria = models.ForeignKey(Seria, db_column='seria')
@@ -86,6 +89,7 @@ class Pasek(models.Model):
         cursor.execute("SELECT max(id) FROM paski;")
         return cursor.fetchone()[0]
 
+admin.site.register(Pasek)
 tagging.register(Pasek)
 
 class Attachment(models.Model):
@@ -98,3 +102,5 @@ class Attachment(models.Model):
         # managed = False
         db_table = u'attachments'
         ordering = ["pasek", "sortorder"]
+
+admin.site.register(Attachment)
