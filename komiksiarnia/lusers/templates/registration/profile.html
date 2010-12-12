@@ -6,6 +6,7 @@
 <div class="profile-form">
   <h2>Ukryte serie</h2>
   <form method="post" action="{% url komiksiarnia.lusers.views.user_profile %}">
+    {% csrf_token %}
     <ul class="form">{{ serie_form.as_ul }}</ul>
     <input type="submit" value="Zapisz" >
   </form>
@@ -14,6 +15,7 @@
 <div class="profile-form">
   <h2>Zmiana hasła</h2>
   <form  method="post" action="{% url django.contrib.auth.views.password_change %}">
+    {% csrf_token %}
     <ul class="form">{{ passwd_form.as_ul }}</ul>
     <input type="submit" value="Zapisz">
   </form>

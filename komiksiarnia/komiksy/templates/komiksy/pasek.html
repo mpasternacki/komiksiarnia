@@ -25,6 +25,7 @@
     <span class="quiet">Brak.</span>{% endif %}
     {% if user.is_authenticated %}
     <form method="POST" action="{{pasek.get_absolute_url}}">
+      {% csrf_token %}
       <span><input type="hidden" name="action" value="tag" />
       <input type="text" class="text" name="tag" />
       <input type="submit" value="dodaj tag" /></span>
@@ -46,5 +47,5 @@
     <!-- <li class="quiet">archiwum</li> -->
   </ul><div class="clearfix"></div>
   <div class="fetchinfo">Pobrano {{pasek.time}} z <a href="{{pasek.seria.url}}">{{pasek.seria.url}}</a></div>
-  
+
 </div>

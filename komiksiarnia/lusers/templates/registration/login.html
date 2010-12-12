@@ -4,6 +4,7 @@
 {% block content %}
 <div class="profile-form">
   <form method="post" action="{% url django.contrib.auth.views.login %}">
+    {% csrf_token %}
     <ul class="form">{{ form.as_ul }}</ul>
     <input type="submit" value="zaloguj" />
   </form>

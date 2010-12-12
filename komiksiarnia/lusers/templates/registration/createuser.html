@@ -4,6 +4,7 @@
 {% block content %}
 <div class="profile-form">
   <form method="post" action="{% url komiksiarnia.lusers.views.createuser %}">
+    {% csrf_token %}
     <ul class="form">{{ form.as_ul }}</ul>
     <input type="submit" value="rejestruj">
   </form>
