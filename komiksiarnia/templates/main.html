@@ -27,6 +27,7 @@
            zalogowano: <a href="/accounts/profile/">{{ user }}</a> [<a href="/accounts/logout/">wyloguj</a>]
            {% else %}
            <form method="post" action="{% url django.contrib.auth.views.login %}">
+             {% csrf_token %}
              <label for="id_username">login</label>
              <input id="id_username" type="text" class="text" name="username" maxlength="30">
              <label for="id_password">hasło</label>
@@ -59,4 +60,4 @@
      </div>
    </body>
 </html>
- 
+
