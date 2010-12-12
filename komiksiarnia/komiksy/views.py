@@ -41,7 +41,7 @@ def random(request,seria):
         qs = Pasek.objects.all()
     else:
         qs = Pasek.objects.filter(seria=get_object_or_404(Seria, tytul=seria))
-    if request.user.is_authenticated:
+    if request.user.is_authenticated():
         qs = qs.exclude(
             seria__in=request.user.get_profile().serie_ignorowane.all() )
     return redirect(qs.order_by('?')[0])
@@ -49,7 +49,7 @@ def random(request,seria):
 def tag_list(request, seria):
     if seria == '*':
         s = {'tytul':'*', 'pelny_tytul':'wszystkich serii'}
-        if request.user.is_authenticated:
+        if request.user.is_authenticated():
             tt = Tag.objects.usage_for_queryset(Pasek.objects.exclude(
                 seria__in=request.user.get_profile().serie_ignorowane.all()),
                                              counts=True)
@@ -76,10 +76,10 @@ def tag(request, seria, tag):
     return render_to_response('komiksy/pasek_list.html',
                               dict(object_list=pp, title=t),
                               context_instance=RequestContext(request))
-    
+
 def pasek(request, seria, namiar):
     s = get_object_or_404(Seria, tytul=seria)
-    
+
     ext = None
     if namiar.find(',') >= 0: namiar, ext = namiar.split(',',1)
 
@@ -116,7 +116,7 @@ def new_redirect(request, seria=None):
 
     if seria is None: url = '/new/%d/' % last_mid
     else: url = '/%s/new/%d/' % ( seria, last_mid )
-    
+
     resp = HttpResponseRedirect(url)
     resp.set_cookie('current_max_id', str(last_mid), 3600)
     resp.set_cookie('max_id', str(mid), 60*60*24*6004)
